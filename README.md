@@ -52,3 +52,8 @@ By default, this will start the server on port 8000.
 
 ### Running unit tests
 TODO
+
+### TODO
+- Testing code
+- CI/CD Pipeline
+- Add logger for monitoring
