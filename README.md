@@ -6,7 +6,7 @@ Model API Wrapper, like the name suggest, is an API template that wraps a Machin
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
-- Python 3.6 / Anaconda
+- Python 3 / Anaconda
 
 ### Installing
 Clone the repository:
