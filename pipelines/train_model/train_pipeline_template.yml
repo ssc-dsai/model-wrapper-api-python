@@ -1,0 +1,19 @@
+name: Run Databricks Job GitHub Action Demo 
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch: 
+jobs:
+  train-model: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run Databricks Job
+      uses: SSC-DSAI/databricks-run-job-github-action@main
+      with:
+        databricks-host: '<your-databrick-host>'
+        databricks-token: '<your-databrick-token>'
+        databricks-job-id: '<your-databrick-job-id-integer>'
