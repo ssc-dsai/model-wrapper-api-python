@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      MODEL_NAME: MODEL_NAME
+      MODEL_NAME: ${{ secrets.MODEL_NAME }}
 
     steps:
     - uses: actions/checkout@v2
@@ -34,17 +34,17 @@ jobs:
 
     - uses: azure/docker-login@v1
       with:
-        login-server: <acr-host-url>
+        login-server: ${{ secrets.ACR_HOST }}
         username: ${{ secrets.SPN_ID }}
         password: ${{ secrets.SPN_PWD }}
-
+        
     - run: |
-        docker build . -t <acr-host-url>/<app-name>:${{ github.sha }}
-        docker push <acr-host-url>/<app-name>:${{ github.sha }}
+        docker build . -t ${{ secrets.ACR_HOST }}/${{ secrets.APP_NAME }}:${{ github.sha }}
+        docker push ${{ secrets.ACR_HOST }}/${{ secrets.APP_NAME }}:${{ github.sha }}
 
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: '<app-name>'
+        app-name: '${{ secrets.APP_NAME }}'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile}}
-        images: '<acr-host-url>/<app-name>:${{ github.sha }}'
+        images: '${{ secrets.ACR_HOST }}/${{ secrets.APP_NAME }}:${{ github.sha }}'

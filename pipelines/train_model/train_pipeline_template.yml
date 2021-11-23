@@ -14,6 +14,6 @@ jobs:
     - name: Run Databricks Job
       uses: SSC-DSAI/databricks-run-job-github-action@main
       with:
-        databricks-host: '<your-databrick-host>'
-        databricks-token: '<your-databrick-token>'
-        databricks-job-id: '<your-databrick-job-id-integer>'
+        databricks-host: ${{ secrets.DATABRICKS_HOST }}
+        databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
+        databricks-job-id: ${{ secrets.DATABRICKS_JOB_ID }}
